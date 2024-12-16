@@ -1,0 +1,13 @@
+Directory Structures:
+DB
+Models
+Controllers
+Routers
+Middlewares
+Utils
+More (depends)
+
+//Initialize the node package
+npm init
+//Express Start
+npm i express
