@@ -1,19 +1,33 @@
-require('dotenv').config();
-const express = require('express')
-const app = express()
+import dotenv from "dotenv";
+dotenv.config();
+import express from "express";
+import cors from "cors";
+const app = express();
 
-app.get('/', (req, res)=> {
-    res.send("Hello World!")
+app.use(cors())
+
+app.get("/api/", (req, res) => {
+  res.send("Hello World!");
+});
+
+// get a list of 5 jokes
+app.get('/api/jokes', (req, res)=>{
+    const jokes = [
+        {
+            id: 1,
+            title: "A Joke",
+            content: "This is a joke"
+        },
+        {
+            id: 2,
+            title: "Another Joke",
+            content: "This is a joke"
+        }
+    ]
+
+    res.send(jokes);
 })
-app.get("/twitter", (req, res)=>{
-    res.send("hiteshdom.com")
-})
-app.get("/login", (req, res)=>{
-    res.send('<h1>Please Login</h1>')
-})
-app.get('/youtube',(req, res)=>{
-    res.send("<h2>Chai aur code</h2>")
-})
-app.listen(process.env.PORT, ()=>{
-    console.log(`Server is running at port ${process.env.PORT}`)
-}) 
+
+app.listen(process.env.PORT, () => {
+  console.log(`Server is running at port ${process.env.PORT}`);
+});
